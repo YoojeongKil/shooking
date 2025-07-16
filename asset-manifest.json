@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/shooking/static/css/main.80fef136.css",
+    "main.js": "/shooking/static/js/main.bf72f3cc.js",
+    "static/js/453.2c176ffa.chunk.js": "/shooking/static/js/453.2c176ffa.chunk.js",
+    "static/media/image1.jpg": "/shooking/static/media/image1.ac908703827284bbd4e1.jpg",
+    "static/media/image5.jpg": "/shooking/static/media/image5.0e7eeb38da32a352358b.jpg",
+    "static/media/image3.jpg": "/shooking/static/media/image3.b77a564a47c63759f764.jpg",
+    "static/media/image6.jpg": "/shooking/static/media/image6.04119df0ecda92aebf4f.jpg",
+    "static/media/image2.jpg": "/shooking/static/media/image2.ed05b8c915ade322ac7a.jpg",
+    "static/media/image4.jpg": "/shooking/static/media/image4.ad0b2fe885cc16270bfd.jpg",
+    "index.html": "/shooking/index.html",
+    "main.80fef136.css.map": "/shooking/static/css/main.80fef136.css.map",
+    "main.bf72f3cc.js.map": "/shooking/static/js/main.bf72f3cc.js.map",
+    "453.2c176ffa.chunk.js.map": "/shooking/static/js/453.2c176ffa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80fef136.css",
+    "static/js/main.bf72f3cc.js"
+  ]
+}

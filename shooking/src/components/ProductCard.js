@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function ProductCard({ product, setCartCount }) {
+export default function ProductCard({ product, setCartCount }) {
   const [added, setAdded] = useState(false);
 
   const handleClick = () => {
@@ -36,5 +36,3 @@ function ProductCard({ product, setCartCount }) {
     </div>
   );
 }
-
-export default ProductCard;

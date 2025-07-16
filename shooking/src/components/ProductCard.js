@@ -1,4 +1,15 @@
-function ProductCard({ product }) {
+import { useState } from "react";
+
+function ProductCard({ product, setCartCount }) {
+  const [added, setAdded] = useState(false);
+
+  const handleClick = () => {
+    if (!added) {
+      setAdded(true);
+      setCartCount((count) => count + 1);
+    }
+  };
+
   return (
     <div class="bg-white border border-gray-200 rounded-lg">
       <img
@@ -12,8 +23,13 @@ function ProductCard({ product }) {
         <div className="text-sm font-medium">
           {product.price.toLocaleString()}원
         </div>
-        <button className="w-[43px] text-[10px] font-bold px-3 py-1 bg-black text-white rounded-full">
-          담기
+        <button
+          onClick={handleClick}
+          className={`w-[50px] text-[10px] font-bold px-3 py-1 rounded-full ${
+            added ? "bg-gray-300 text-black" : "bg-black text-white"
+          }`}
+        >
+          {added ? "담김!" : "담기"}
         </button>
       </div>
     </div>

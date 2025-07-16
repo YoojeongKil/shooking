@@ -1,11 +1,11 @@
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import Badge from "@mui/material/Badge";
 
-export default function Header() {
+export default function Header({ cartCount }) {
   return (
     <header className="flex justify-end bg-black px-8 py-4">
       <Badge
-        badgeContent={3}
+        badgeContent={cartCount}
         overlap="circular"
         anchorOrigin={{
           vertical: "bottom",
@@ -17,13 +17,13 @@ export default function Header() {
             width: 15,
             height: 15,
             minWidth: 0,
-            fontWeight: 'bold',    
-            color: 'black',           
-            fontSize: 10,             
-            display: 'flex',         
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: '50%',
+            fontWeight: "bold",
+            color: "black",
+            fontSize: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "50%",
           },
         }}
       >

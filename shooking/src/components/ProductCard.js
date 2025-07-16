@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 
 function ProductCard({ product, setCartCount }) {
@@ -11,13 +12,13 @@ function ProductCard({ product, setCartCount }) {
   };
 
   return (
-    <div class="bg-white border border-gray-200 rounded-lg">
+    <div className="bg-white border border-gray-200 rounded-lg">
       <img
-        class="rounded-t-lg w-full h-[120px] object-cover"
+        className="rounded-t-lg w-full h-[120px] object-cover"
         src={product.image}
         alt={product.title}
       />
-      <div class="p-4 flex flex-col gap-1">
+      <div className="p-4 flex flex-col gap-1">
         <div className="text-base font-medium">{product.title}</div>
         <div className="text-xs text-gray-500">{product.desc}</div>
         <div className="text-sm font-medium">

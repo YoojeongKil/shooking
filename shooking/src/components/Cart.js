@@ -26,7 +26,7 @@ export default function Cart({ cartCount }) {
         },
       }}
     >
-      <LiaShoppingBagSolid className="text-white w-5 h-6" />
+      <LiaShoppingBagSolid className="w-5 h-6" />
     </Badge>
   );
 }

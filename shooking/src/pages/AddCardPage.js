@@ -1,11 +1,19 @@
-import PaymentForm from "./components/PaymentForm";
+import { useNavigate } from "react-router-dom";
+import CardHeader from "../components/CardHeader";
+import PaymentForm from "../components/PaymentForm";
 
-function AddCardPage() {
+export default function AddCardPage() {
+  const navigate = useNavigate();
+
   return (
-    <div className="max-w-md mx-auto min-h-screen">
+    <div>
+      <CardHeader
+        title="카드 추가"
+        showBack={true}
+        onClose={() => navigate("/shooking")}
+      />
+
       <PaymentForm />
     </div>
   );
 }
-
-export default AddCardPage;

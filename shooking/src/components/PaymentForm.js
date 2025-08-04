@@ -3,6 +3,10 @@ import CardNumberInput from "./CardNumberInput";
 import CardValidThruInput from "./CardValidThruInput";
 import CardHolderInput from "./CardHolderInput";
 import CardCVCInput from "./CardCVCInput";
+import CardPasswordInput from "./CardPasswordInput";
+import CardImage from "./CardImage";
+import { useNavigate } from "react-router-dom";
+import { useCard } from "../context/CardContext";
 
 const PaymentForm = () => {
   const [form, setForm] = useState({
@@ -10,6 +14,7 @@ const PaymentForm = () => {
     expiry: "",
     cardHolder: "",
     cvc: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -47,6 +52,8 @@ const PaymentForm = () => {
         return value.trim() ? "" : "이름을 입력하세요.";
       case "cvc":
         return /^\d{3}$/.test(value) ? "" : "3자리 숫자를 입력하세요.";
+      case "password":
+        return /^\d{2}$/.test(value) ? "" : "앞 2자리 숫자를 입력하세요.";
       default:
         return "";
     }
@@ -58,6 +65,9 @@ const PaymentForm = () => {
     const errorMsg = validateField(name, value);
     setErrors((prev) => ({ ...prev, [name]: errorMsg }));
   };
+
+  const { addCard } = useCard();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,36 +81,72 @@ const PaymentForm = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      alert("결제가 완료되었습니다.");
+      addCard(form);
+      navigate("/card");
     }
   };
 
+  const isFormValid = () => {
+    return (
+      form.cardNumber.length === 16 &&
+      !validateField("cardNumber", form.cardNumber) &&
+      !validateField("expiry", form.expiry) &&
+      !validateField("cardHolder", form.cardHolder) &&
+      !validateField("cvc", form.cvc) &&
+      form.password.length === 2 &&
+      !validateField("password", form.password)
+    );
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <CardNumberInput
-        value={form.cardNumber}
-        onChange={(val) => handleChange("cardNumber", val)}
-        error={errors.cardNumber}
+    <div className="flex flex-col items-center gap-5 p-5">
+      <CardImage
+        cardNumber={form.cardNumber}
+        expiry={form.expiry}
+        cardHolder={form.cardHolder}
       />
 
-      <CardValidThruInput
-        value={form.expiry}
-        onChange={(val) => handleChange("expiry", val)}
-        error={errors.expiry}
-      />
+      <form onSubmit={handleSubmit} className="w-full space-y-5">
+        <CardNumberInput
+          value={form.cardNumber}
+          onChange={(val) => handleChange("cardNumber", val)}
+          error={errors.cardNumber}
+        />
 
-      <CardHolderInput
-        value={form.cardHolder}
-        onChange={(val) => handleChange("cardHolder", val)}
-        error={errors.cardHolder}
-      />
+        <CardValidThruInput
+          value={form.expiry}
+          onChange={(val) => handleChange("expiry", val)}
+          error={errors.expiry}
+        />
 
-      <CardCVCInput
-        value={form.cvc}
-        onChange={(val) => handleChange("cvc", val)}
-        error={errors.cvc}
-      />
-    </form>
+        <CardHolderInput
+          value={form.cardHolder}
+          onChange={(val) => handleChange("cardHolder", val)}
+          error={errors.cardHolder}
+        />
+
+        <CardCVCInput
+          value={form.cvc}
+          onChange={(val) => handleChange("cvc", val)}
+          error={errors.cvc}
+        />
+
+        <CardPasswordInput
+          value={form.password}
+          onChange={(val) => handleChange("password", val)}
+          error={errors.password}
+        />
+
+        {isFormValid() && (
+          <button
+            type="submit"
+            className="w-full bg-black text-white py-3 rounded-full text-sm font-bold"
+          >
+            작성 완료
+          </button>
+        )}
+      </form>
+    </div>
   );
 };
 

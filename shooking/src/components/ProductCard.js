@@ -1,14 +1,28 @@
-import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const ActionButton = ({ children, onClick, className }) => (
+  <button
+    onClick={onClick}
+    className={`w-[50px] text-[10px] font-bold px-3 py-1 rounded-full ${className}`}
+  >
+    {children}
+  </button>
+);
 
 export default function ProductCard({ product, setCartCount }) {
   const [added, setAdded] = useState(false);
+  const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleAdd = () => {
     if (!added) {
       setAdded(true);
       setCartCount((count) => count + 1);
     }
+  };
+
+  const handleBuy = () => {
+    navigate("/card");
   };
 
   return (
@@ -24,14 +38,17 @@ export default function ProductCard({ product, setCartCount }) {
         <div className="text-sm font-medium">
           {product.price.toLocaleString()}원
         </div>
-        <button
-          onClick={handleClick}
-          className={`w-[50px] text-[10px] font-bold px-3 py-1 rounded-full ${
-            added ? "bg-gray-300 text-black" : "bg-black text-white"
-          }`}
-        >
-          {added ? "담김!" : "담기"}
-        </button>
+        <div className="flex gap-[10px]">
+          <ActionButton
+            onClick={handleAdd}
+            className={added ? "bg-gray-300 text-black" : "bg-black text-white"}
+          >
+            {added ? "담김!" : "담기"}
+          </ActionButton>
+          <ActionButton onClick={handleBuy} className="bg-[#FFEF64] text-black">
+            구매
+          </ActionButton>
+        </div>
       </div>
     </div>
   );

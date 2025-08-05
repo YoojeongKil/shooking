@@ -22,11 +22,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: Set Git Identity
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Install Dependencies
         run: npm install
 
@@ -34,6 +29,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

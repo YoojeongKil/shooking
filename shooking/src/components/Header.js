@@ -9,9 +9,9 @@ export default function Header({
   cartCount,
 }) {
   return (
-    <header className="flex justify-between items-center px-5 h-[69px] text-white bg-black">
+    <header className="flex justify-between items-center px-5 h-[69px] text-white bg-black cursor-pointer">
       {showBackButton ? (
-        <FaArrowLeft onClick={onBackClick} className="w-6 h-6" />
+        <FaArrowLeft onClick={onBackClick} className="w-5 h-5" />
       ) : (
         <div />
       )}

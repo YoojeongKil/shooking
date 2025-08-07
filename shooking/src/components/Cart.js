@@ -1,7 +1,7 @@
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import Badge from "@mui/material/Badge";
 
-export default function Cart({ cartCount }) {
+export default function Cart({ cartCount, onClick }) {
   return (
     <Badge
       badgeContent={cartCount}
@@ -25,6 +25,7 @@ export default function Cart({ cartCount }) {
           borderRadius: "50%",
         },
       }}
+      onClick={onClick}
     >
       <LiaShoppingBagSolid className="w-5 h-6" />
     </Badge>

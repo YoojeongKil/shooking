@@ -7,6 +7,7 @@ import CardPasswordInput from "./CardPasswordInput";
 import CardImage from "./CardImage";
 import { useNavigate } from "react-router-dom";
 import { useCard } from "../context/CardContext";
+import Button from "./Button";
 
 const PaymentForm = () => {
   const [form, setForm] = useState({
@@ -137,14 +138,7 @@ const PaymentForm = () => {
           error={errors.password}
         />
 
-        {isFormValid() && (
-          <button
-            type="submit"
-            className="w-full bg-black text-white py-3 rounded-full text-sm font-bold"
-          >
-            작성 완료
-          </button>
-        )}
+        {isFormValid() && <Button type="submit">작성 완료</Button>}
       </form>
     </div>
   );

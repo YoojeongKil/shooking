@@ -1,10 +1,14 @@
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import Badge from "@mui/material/Badge";
+import { useRecoilValue } from "recoil";
+import { cartState } from "../recoil/atoms/cartAtom";
 
-export default function Cart({ cartCount, onClick }) {
+export default function Cart({ onClick }) {
+  const cart = useRecoilValue(cartState);
+
   return (
     <Badge
-      badgeContent={cartCount}
+      badgeContent={cart.length}
       overlap="circular"
       anchorOrigin={{
         vertical: "bottom",

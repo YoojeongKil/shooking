@@ -1,5 +1,7 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { cartState } from "../recoil/atoms/cartAtom";
+import { addToCart } from "../utils/cartUtils";
 
 const ActionButton = ({ children, onClick, className }) => (
   <button
@@ -10,15 +12,12 @@ const ActionButton = ({ children, onClick, className }) => (
   </button>
 );
 
-export default function ProductCard({ product, setCartCount }) {
-  const [added, setAdded] = useState(false);
+export default function ProductCard({ product }) {
   const navigate = useNavigate();
+  const [cart, setCart] = useRecoilState(cartState);
 
   const handleAdd = () => {
-    if (!added) {
-      setAdded(true);
-      setCartCount((count) => count + 1);
-    }
+    setCart(addToCart(cart, product));
   };
 
   const handleBuy = () => {
@@ -30,20 +29,17 @@ export default function ProductCard({ product, setCartCount }) {
       <img
         className="rounded-t-lg w-full h-[120px] object-cover"
         src={product.image}
-        alt={product.title}
+        alt={product.brand}
       />
       <div className="p-4 flex flex-col gap-1">
-        <div className="text-base font-medium">{product.title}</div>
+        <div className="text-base font-medium">{product.brand}</div>
         <div className="text-xs text-gray-500">{product.desc}</div>
         <div className="text-sm font-medium">
           {product.price.toLocaleString()}원
         </div>
         <div className="flex gap-[10px]">
-          <ActionButton
-            onClick={handleAdd}
-            className={added ? "bg-gray-300 text-black" : "bg-black text-white"}
-          >
-            {added ? "담김!" : "담기"}
+          <ActionButton onClick={handleAdd} className="bg-black text-white">
+            담기
           </ActionButton>
           <ActionButton onClick={handleBuy} className="bg-[#FFEF64] text-black">
             구매

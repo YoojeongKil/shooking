@@ -6,7 +6,6 @@ export default function Header({
   showCartButton,
   onBackClick,
   onCartClick,
-  cartCount,
 }) {
   return (
     <header className="flex justify-between items-center px-5 h-[69px] text-white bg-black cursor-pointer">
@@ -15,11 +14,7 @@ export default function Header({
       ) : (
         <div />
       )}
-      {showCartButton ? (
-        <Cart onClick={onCartClick} cartCount={cartCount} />
-      ) : (
-        <div />
-      )}
+      {showCartButton ? <Cart onClick={onCartClick} /> : <div />}
     </header>
   );
 }

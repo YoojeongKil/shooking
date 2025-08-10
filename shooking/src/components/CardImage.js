@@ -24,7 +24,9 @@ const CardImage = ({ cardNumber, expiry, cardHolder }) => {
       </div>
 
       <div className="flex justify-between text-xs font-medium">
-        <div>{formattedHolder}</div>
+        <div className="max-w-[100px] overflow-hidden whitespace-nowrap uppercase">
+          {formattedHolder}
+        </div>
         <div>{formattedExpiry}</div>
       </div>
     </div>

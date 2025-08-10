@@ -20,7 +20,7 @@ const CardHolderInput = ({ value, onChange, error }) => {
         onChange={handleChange}
         maxLength={maxLength}
         placeholder="카드에 표시된 이름과 동일하게 입력하세요."
-        className="bg-[#ECEBF1] w-full h-[45px] rounded-lg text-lg text-center font-medium text-black"
+        className="bg-[#ECEBF1] w-full h-[45px] rounded-lg text-lg text-center font-medium text-black uppercase"
       />
       {error && <p className="text-xs text-red-500">{error}</p>}
     </div>

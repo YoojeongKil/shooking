@@ -138,7 +138,7 @@ const PaymentForm = () => {
           error={errors.password}
         />
 
-        {isFormValid() && <Button type="submit">작성 완료</Button>}
+        {isFormValid() && <Button type="submit" className="bg-black text-white py-3 text-sm font-bold">작성 완료</Button>}
       </form>
     </div>
   );

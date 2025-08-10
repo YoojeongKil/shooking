@@ -8,7 +8,7 @@ export default function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`w-full bg-black text-white py-3 rounded-full text-sm font-bold ${className}`}
+      className={`w-full rounded-full ${className}`}
     >
       {children}
     </button>

@@ -95,7 +95,7 @@ export default function CartPage() {
 
               <Button
                 type="submit"
-                className="bg-[#393939] py-4 text-xl font-medium"
+                className="bg-[#FFEF64] text-black py-4 text-xl font-medium"
               >
                 결제하기
               </Button>

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import CardHeader from "../components/CardHeader";
 import { useCard } from "../context/CardContext";
 import CardImage from "../components/CardImage";
+import Button from "../components/Button";
 
 export default function CardPage() {
   const { cards } = useCard();
@@ -33,12 +34,13 @@ export default function CardPage() {
                 expiry={card.expiry}
                 cardHolder={card.cardHolder}
               />
-              <button
+
+              <Button
                 onClick={() => handlePayment(card)}
-                className="w-[213px] bg-[#FFEF64] text-black text-[10px] font-bold px-6 py-3 rounded-full"
+                className="bg-[#FFEF64] text-black text-[10px] font-bold px-6 py-3"
               >
                 이 카드로 결제하기
-              </button>
+              </Button>
             </div>
           ))
         ) : (

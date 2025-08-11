@@ -24,7 +24,7 @@ export default function ProductListPage() {
         setVisibleProducts((prev) => [...prev, ...more]);
         setPage((prev) => prev + 1);
       }
-    }, 1000);
+    }, 500);
   }, [page]);
 
   useEffect(() => {

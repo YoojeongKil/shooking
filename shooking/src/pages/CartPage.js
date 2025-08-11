@@ -94,8 +94,8 @@ export default function CartPage() {
               </div>
 
               <Button
-                type="submit"
                 className="bg-[#FFEF64] text-black py-4 text-xl font-medium"
+                onClick={() => navigate("/card")}
               >
                 결제하기
               </Button>

@@ -5,6 +5,7 @@ import AddCardPage from "./pages/AddCardPage";
 import { CardProvider } from "./context/CardContext";
 import CartPage from "./pages/CartPage";
 import { RecoilRoot } from "recoil";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/shooking" element={<ProductListPage />} />
+            <Route path="/product/:productId" element={<ProductDetailPage />} />
             <Route path="/card" element={<CardPage />} />
             <Route path="/add-card" element={<AddCardPage />} />
             <Route path="/cart" element={<CartPage />} />

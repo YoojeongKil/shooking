@@ -4,6 +4,8 @@ import image3 from "../images/image3.jpg";
 import image4 from "../images/image4.jpg";
 import image5 from "../images/image5.jpg";
 import image6 from "../images/image6.jpg";
+import image7 from "../images/image7.jpg";
+import image8 from "../images/image8.jpg";
 
 const products = [
   {
@@ -47,6 +49,20 @@ const products = [
     desc: "힙한 컬러가 매력적인 신발",
     price: 35000,
     image: image6,
+  },
+  {
+    id: 7,
+    brand: "브랜드A",
+    desc: "편안하고 착용감이 좋은 신발",
+    price: 35000,
+    image: image7,
+  },
+  {
+    id: 8,
+    brand: "브랜드A",
+    desc: "힙한 컬러가 매력적인 신발",
+    price: 35000,
+    image: image8,
   },
 ];
 

@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import { LuMinus, LuPlus } from "react-icons/lu";
 import { useRecoilState } from "recoil";
 import { cartState } from "../recoil/atoms/cartAtom";
 import { decreaseQuantity, increaseQuantity } from "../utils/cartUtils";
+import CartItem from "../components/CartItem";
 
 export default function CartPage() {
   const navigate = useNavigate();
@@ -41,36 +41,12 @@ export default function CartPage() {
           <>
             <div className="divide-y">
               {cart.map((item) => (
-                <div key={item.id} className="flex p-5 gap-14 items-center">
-                  <img
-                    src={item.image}
-                    alt={item.brand}
-                    className="w-36 h-36 object-cover rounded-[30px]"
-                  />
-                  <div>
-                    <div className="text-base font-medium mb-2">
-                      {item.brand}
-                    </div>
-                    <div className="text-2xl font-bold">
-                      {item.price.toLocaleString()}원
-                    </div>
-                    <div className="flex items-center gap-4 mt-6">
-                      <button
-                        onClick={() => handleDecrease(item.id)}
-                        className="w-6 h-6 flex items-center justify-center bg-[#e6e6e6] rounded-[10px]"
-                      >
-                        <LuMinus />
-                      </button>
-                      <div>{item.quantity}</div>
-                      <button
-                        onClick={() => handleIncrease(item.id)}
-                        className="w-6 h-6 flex items-center justify-center bg-[#e6e6e6] rounded-[10px]"
-                      >
-                        <LuPlus />
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  onIncrease={handleIncrease}
+                  onDecrease={handleDecrease}
+                />
               ))}
             </div>
 

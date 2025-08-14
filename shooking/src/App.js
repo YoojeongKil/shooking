@@ -6,6 +6,7 @@ import { CardProvider } from "./context/CardContext";
 import CartPage from "./pages/CartPage";
 import { RecoilRoot } from "recoil";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import PaymentCompletePage from "./pages/PaymentCompletePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/card" element={<CardPage />} />
             <Route path="/add-card" element={<AddCardPage />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/complete" element={<PaymentCompletePage />} />
           </Routes>
         </BrowserRouter>
       </CardProvider>

@@ -11,10 +11,9 @@ export default function CardPage() {
   const handleClick = () => {
     navigate("/add-card");
   };
-  const handlePayment = (card) => {
-    console.log("선택한 카드로 결제:", card);
-    // navigate("/payment", { state: card });
-    alert(`"${card.cardHolder}" 님의 카드로 결제합니다.`);
+
+  const handlePayment = () => {
+    navigate("/complete");
   };
 
   return (

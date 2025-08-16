@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { cartState } from "../recoil/atoms/cartAtom";
 import { decreaseQuantity, increaseQuantity } from "../utils/cartUtils";
 import CartItem from "../components/CartItem";
+import { cartSummaryState } from "../recoil/selectors/cartSelectors";
 
 export default function CartPage() {
   const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartState);
+  const { productTotal, shipping, totalPrice } =
+    useRecoilValue(cartSummaryState);
 
   const handleIncrease = (id) => {
     setCart((prevCart) => increaseQuantity(prevCart, id));
@@ -17,13 +20,6 @@ export default function CartPage() {
   const handleDecrease = (id) => {
     setCart((prevCart) => decreaseQuantity(prevCart, id));
   };
-
-  const productTotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-  const shipping = productTotal >= 100000 ? 0 : 3000;
-  const total = productTotal + shipping;
 
   return (
     <div>
@@ -66,7 +62,7 @@ export default function CartPage() {
             <div className="p-5 border-t">
               <div className="flex justify-between font-bold text-base mb-11">
                 <div>총 금액</div>
-                <div>{total.toLocaleString()}원</div>
+                <div>{totalPrice.toLocaleString()}원</div>
               </div>
 
               <Button

@@ -35,7 +35,7 @@ export default function CardPage() {
               />
 
               <Button
-                onClick={() => handlePayment(card)}
+                onClick={handlePayment}
                 className="bg-[#FFEF64] text-black text-[10px] font-bold px-6 py-3"
               >
                 이 카드로 결제하기

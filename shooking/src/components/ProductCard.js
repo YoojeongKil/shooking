@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { cartState } from "../recoil/atoms/cartAtom";
 import { addToCart } from "../utils/cartUtils";
 import { useState } from "react";
+import { buyState } from "../recoil/atoms/buyAtom";
 
 const ActionButton = ({ children, onClick, className }) => (
   <button
@@ -17,6 +18,7 @@ export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartState);
   const [added, setAdded] = useState(false);
+  const setBuy = useSetRecoilState(buyState);
 
   const handleAdd = () => {
     setCart(addToCart(cart, product, 1));
@@ -28,6 +30,7 @@ export default function ProductCard({ product }) {
   };
 
   const handleBuy = () => {
+    setBuy({ product, quantity: 1 });
     navigate("/card");
   };
 

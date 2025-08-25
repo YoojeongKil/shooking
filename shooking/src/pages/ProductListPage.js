@@ -65,6 +65,7 @@ export default function ProductListPage() {
         {visibleProducts.length < products.length && (
           <div
             ref={loaderRef}
+            data-testid="loader"
             className="flex justify-center items-center mt-4"
           >
             <div className="w-5 h-5 border-4 border-black border-t-transparent rounded-full animate-spin"></div>

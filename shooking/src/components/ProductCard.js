@@ -35,7 +35,10 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg">
+    <div
+      className="bg-white border border-gray-200 rounded-lg"
+      data-testid="product-card"
+    >
       <Link to={`/product/${product.id}`}>
         <img
           className="rounded-t-lg w-full h-[120px] object-cover"

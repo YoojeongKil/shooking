@@ -31,7 +31,7 @@ export default function Cart({ onClick }) {
       }}
       onClick={onClick}
     >
-      <LiaShoppingBagSolid className="w-5 h-6" />
+      <LiaShoppingBagSolid className="w-5 h-6" aria-label="cart-icon" />
     </Badge>
   );
 }
